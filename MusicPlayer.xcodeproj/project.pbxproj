@@ -13,6 +13,27 @@
 		2677258F1D3B685C008689EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2677258D1D3B685C008689EC /* Main.storyboard */; };
 		267725911D3B685C008689EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 267725901D3B685C008689EC /* Assets.xcassets */; };
 		267725941D3B685C008689EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 267725921D3B685C008689EC /* LaunchScreen.storyboard */; };
+		267726281D3BB73B008689EC /* buyao.wav in Resources */ = {isa = PBXBuildFile; fileRef = 267726131D3BB73B008689EC /* buyao.wav */; };
+		267726291D3BB73B008689EC /* chatcome.wav in Resources */ = {isa = PBXBuildFile; fileRef = 267726141D3BB73B008689EC /* chatcome.wav */; };
+		2677262A1D3BB73B008689EC /* G.E.M. 邓紫棋 - 泡沫.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 267726151D3BB73B008689EC /* G.E.M. 邓紫棋 - 泡沫.mp3 */; };
+		2677262B1D3BB73B008689EC /* I'm yours.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 267726161D3BB73B008689EC /* I'm yours.lrc */; };
+		2677262C1D3BB73B008689EC /* Jason Mraz - I'm Yours.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 267726171D3BB73B008689EC /* Jason Mraz - I'm Yours.mp3 */; };
+		2677262D1D3BB73B008689EC /* jason.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 267726181D3BB73B008689EC /* jason.jpg */; };
+		2677262E1D3BB73B008689EC /* lamazhengzhuan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 267726191D3BB73B008689EC /* lamazhengzhuan.jpg */; };
+		2677262F1D3BB73B008689EC /* Owl City - The Saltwater Room.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2677261A1D3BB73B008689EC /* Owl City - The Saltwater Room.mp3 */; };
+		267726301D3BB73B008689EC /* paomo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2677261B1D3BB73B008689EC /* paomo.jpg */; };
+		267726311D3BB73B008689EC /* st.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2677261C1D3BB73B008689EC /* st.jpg */; };
+		267726321D3BB73B008689EC /* test.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2677261D1D3BB73B008689EC /* test.wav */; };
+		267726331D3BB73B008689EC /* The salt water room.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 2677261E1D3BB73B008689EC /* The salt water room.lrc */; };
+		267726341D3BB73B008689EC /* xpg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2677261F1D3BB73B008689EC /* xpg.jpg */; };
+		267726351D3BB73B008689EC /* 小苹果.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 267726201D3BB73B008689EC /* 小苹果.lrc */; };
+		267726361D3BB73B008689EC /* 小苹果.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 267726211D3BB73B008689EC /* 小苹果.mp3 */; };
+		267726371D3BB73B008689EC /* 张译 - 稳稳的幸福.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 267726221D3BB73B008689EC /* 张译 - 稳稳的幸福.mp3 */; };
+		267726381D3BB73B008689EC /* 月半小夜曲.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 267726231D3BB73B008689EC /* 月半小夜曲.lrc */; };
+		267726391D3BB73B008689EC /* 李克勤 - 月半小夜曲.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 267726241D3BB73B008689EC /* 李克勤 - 月半小夜曲.mp3 */; };
+		2677263A1D3BB73B008689EC /* 李克勤.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 267726251D3BB73B008689EC /* 李克勤.jpg */; };
+		2677263B1D3BB73B008689EC /* 泡沫.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 267726261D3BB73B008689EC /* 泡沫.lrc */; };
+		2677263C1D3BB73B008689EC /* 稳稳的幸福.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 267726271D3BB73B008689EC /* 稳稳的幸福.lrc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +47,27 @@
 		267725901D3B685C008689EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		267725931D3B685C008689EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		267725951D3B685C008689EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		267726131D3BB73B008689EC /* buyao.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buyao.wav; sourceTree = "<group>"; };
+		267726141D3BB73B008689EC /* chatcome.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chatcome.wav; sourceTree = "<group>"; };
+		267726151D3BB73B008689EC /* G.E.M. 邓紫棋 - 泡沫.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "G.E.M. 邓紫棋 - 泡沫.mp3"; sourceTree = "<group>"; };
+		267726161D3BB73B008689EC /* I'm yours.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "I'm yours.lrc"; sourceTree = "<group>"; };
+		267726171D3BB73B008689EC /* Jason Mraz - I'm Yours.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jason Mraz - I'm Yours.mp3"; sourceTree = "<group>"; };
+		267726181D3BB73B008689EC /* jason.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jason.jpg; sourceTree = "<group>"; };
+		267726191D3BB73B008689EC /* lamazhengzhuan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lamazhengzhuan.jpg; sourceTree = "<group>"; };
+		2677261A1D3BB73B008689EC /* Owl City - The Saltwater Room.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Owl City - The Saltwater Room.mp3"; sourceTree = "<group>"; };
+		2677261B1D3BB73B008689EC /* paomo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = paomo.jpg; sourceTree = "<group>"; };
+		2677261C1D3BB73B008689EC /* st.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = st.jpg; sourceTree = "<group>"; };
+		2677261D1D3BB73B008689EC /* test.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = test.wav; sourceTree = "<group>"; };
+		2677261E1D3BB73B008689EC /* The salt water room.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "The salt water room.lrc"; sourceTree = "<group>"; };
+		2677261F1D3BB73B008689EC /* xpg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xpg.jpg; sourceTree = "<group>"; };
+		267726201D3BB73B008689EC /* 小苹果.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "小苹果.lrc"; sourceTree = "<group>"; };
+		267726211D3BB73B008689EC /* 小苹果.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "小苹果.mp3"; sourceTree = "<group>"; };
+		267726221D3BB73B008689EC /* 张译 - 稳稳的幸福.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "张译 - 稳稳的幸福.mp3"; sourceTree = "<group>"; };
+		267726231D3BB73B008689EC /* 月半小夜曲.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "月半小夜曲.lrc"; sourceTree = "<group>"; };
+		267726241D3BB73B008689EC /* 李克勤 - 月半小夜曲.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "李克勤 - 月半小夜曲.mp3"; sourceTree = "<group>"; };
+		267726251D3BB73B008689EC /* 李克勤.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "李克勤.jpg"; sourceTree = "<group>"; };
+		267726261D3BB73B008689EC /* 泡沫.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "泡沫.lrc"; sourceTree = "<group>"; };
+		267726271D3BB73B008689EC /* 稳稳的幸福.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "稳稳的幸福.lrc"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,9 +116,38 @@
 		267725841D3B685C008689EC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				267726121D3BB73B008689EC /* Assets */,
 				267725851D3B685C008689EC /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		267726121D3BB73B008689EC /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				267726131D3BB73B008689EC /* buyao.wav */,
+				267726141D3BB73B008689EC /* chatcome.wav */,
+				267726151D3BB73B008689EC /* G.E.M. 邓紫棋 - 泡沫.mp3 */,
+				267726161D3BB73B008689EC /* I'm yours.lrc */,
+				267726171D3BB73B008689EC /* Jason Mraz - I'm Yours.mp3 */,
+				267726181D3BB73B008689EC /* jason.jpg */,
+				267726191D3BB73B008689EC /* lamazhengzhuan.jpg */,
+				2677261A1D3BB73B008689EC /* Owl City - The Saltwater Room.mp3 */,
+				2677261B1D3BB73B008689EC /* paomo.jpg */,
+				2677261C1D3BB73B008689EC /* st.jpg */,
+				2677261D1D3BB73B008689EC /* test.wav */,
+				2677261E1D3BB73B008689EC /* The salt water room.lrc */,
+				2677261F1D3BB73B008689EC /* xpg.jpg */,
+				267726201D3BB73B008689EC /* 小苹果.lrc */,
+				267726211D3BB73B008689EC /* 小苹果.mp3 */,
+				267726221D3BB73B008689EC /* 张译 - 稳稳的幸福.mp3 */,
+				267726231D3BB73B008689EC /* 月半小夜曲.lrc */,
+				267726241D3BB73B008689EC /* 李克勤 - 月半小夜曲.mp3 */,
+				267726251D3BB73B008689EC /* 李克勤.jpg */,
+				267726261D3BB73B008689EC /* 泡沫.lrc */,
+				267726271D3BB73B008689EC /* 稳稳的幸福.lrc */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,6 +176,7 @@
 		267725791D3B685C008689EC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = HB;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = iceWorks;
 				TargetAttributes = {
@@ -137,8 +209,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				267726371D3BB73B008689EC /* 张译 - 稳稳的幸福.mp3 in Resources */,
+				267726311D3BB73B008689EC /* st.jpg in Resources */,
+				267726391D3BB73B008689EC /* 李克勤 - 月半小夜曲.mp3 in Resources */,
+				2677262F1D3BB73B008689EC /* Owl City - The Saltwater Room.mp3 in Resources */,
+				2677262A1D3BB73B008689EC /* G.E.M. 邓紫棋 - 泡沫.mp3 in Resources */,
+				267726361D3BB73B008689EC /* 小苹果.mp3 in Resources */,
+				2677263B1D3BB73B008689EC /* 泡沫.lrc in Resources */,
+				267726331D3BB73B008689EC /* The salt water room.lrc in Resources */,
+				2677262C1D3BB73B008689EC /* Jason Mraz - I'm Yours.mp3 in Resources */,
+				2677263C1D3BB73B008689EC /* 稳稳的幸福.lrc in Resources */,
+				267726341D3BB73B008689EC /* xpg.jpg in Resources */,
+				2677263A1D3BB73B008689EC /* 李克勤.jpg in Resources */,
+				267726321D3BB73B008689EC /* test.wav in Resources */,
+				267726351D3BB73B008689EC /* 小苹果.lrc in Resources */,
+				267726291D3BB73B008689EC /* chatcome.wav in Resources */,
 				267725941D3B685C008689EC /* LaunchScreen.storyboard in Resources */,
+				267726281D3BB73B008689EC /* buyao.wav in Resources */,
 				267725911D3B685C008689EC /* Assets.xcassets in Resources */,
+				2677262D1D3BB73B008689EC /* jason.jpg in Resources */,
+				267726381D3BB73B008689EC /* 月半小夜曲.lrc in Resources */,
+				267726301D3BB73B008689EC /* paomo.jpg in Resources */,
+				2677262B1D3BB73B008689EC /* I'm yours.lrc in Resources */,
+				2677262E1D3BB73B008689EC /* lamazhengzhuan.jpg in Resources */,
 				2677258F1D3B685C008689EC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = MusicPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iceworks.MusicPlayer;
@@ -275,6 +369,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = MusicPlayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iceworks.MusicPlayer;
@@ -301,6 +396,7 @@
 				2677259A1D3B685C008689EC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
