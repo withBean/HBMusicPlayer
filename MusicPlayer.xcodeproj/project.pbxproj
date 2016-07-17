@@ -34,6 +34,7 @@
 		2677263A1D3BB73B008689EC /* 李克勤.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 267726251D3BB73B008689EC /* 李克勤.jpg */; };
 		2677263B1D3BB73B008689EC /* 泡沫.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 267726261D3BB73B008689EC /* 泡沫.lrc */; };
 		2677263C1D3BB73B008689EC /* 稳稳的幸福.lrc in Resources */ = {isa = PBXBuildFile; fileRef = 267726271D3BB73B008689EC /* 稳稳的幸福.lrc */; };
+		2677263E1D3BB79E008689EC /* mlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2677263D1D3BB79E008689EC /* mlist.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		267726251D3BB73B008689EC /* 李克勤.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "李克勤.jpg"; sourceTree = "<group>"; };
 		267726261D3BB73B008689EC /* 泡沫.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "泡沫.lrc"; sourceTree = "<group>"; };
 		267726271D3BB73B008689EC /* 稳稳的幸福.lrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "稳稳的幸福.lrc"; sourceTree = "<group>"; };
+		2677263D1D3BB79E008689EC /* mlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = mlist.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		267725841D3B685C008689EC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2677263D1D3BB79E008689EC /* mlist.plist */,
 				267726121D3BB73B008689EC /* Assets */,
 				267725851D3B685C008689EC /* main.m */,
 			);
@@ -226,6 +229,7 @@
 				267726291D3BB73B008689EC /* chatcome.wav in Resources */,
 				267725941D3B685C008689EC /* LaunchScreen.storyboard in Resources */,
 				267726281D3BB73B008689EC /* buyao.wav in Resources */,
+				2677263E1D3BB79E008689EC /* mlist.plist in Resources */,
 				267725911D3B685C008689EC /* Assets.xcassets in Resources */,
 				2677262D1D3BB73B008689EC /* jason.jpg in Resources */,
 				267726381D3BB73B008689EC /* 月半小夜曲.lrc in Resources */,
