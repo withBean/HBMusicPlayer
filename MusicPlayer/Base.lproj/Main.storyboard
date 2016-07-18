@@ -31,6 +31,9 @@
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="51" y="10" width="298" height="31"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="sliderValueChange" destination="BYZ-38-t0r" eventType="valueChanged" id="5Fe-WA-T2R"/>
+                                        </connections>
                                     </slider>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zv-z2-3EF" userLabel="previous">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -61,6 +64,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" image="player_btn_next_normal"/>
                                         <state key="highlighted" image="player_btn_next_highlight"/>
+                                        <connections>
+                                            <action selector="next" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hjg-7H-Pqp"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kcp-Ro-NwZ" userLabel="play">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -445,6 +451,20 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="KqQ-ij-PRc"/>
+                    <connections>
+                        <outlet property="albumLbl" destination="7qt-uJ-mSo" id="UMq-Tp-Caz"/>
+                        <outlet property="bgImageView" destination="2mR-XI-WBn" id="ebl-cI-c9T"/>
+                        <outlet property="currentTimeLbl" destination="J6o-L2-kqz" id="BFE-4V-s1O"/>
+                        <outlet property="durationLbl" destination="Thf-YH-wwe" id="dKS-RK-lSk"/>
+                        <outlet property="hCenterView" destination="Jno-lP-TI0" id="5T2-zZ-n7W"/>
+                        <outlet property="hSingerIcon" destination="EUc-hn-RlB" id="kDC-07-1c9"/>
+                        <outlet property="playBtn" destination="kcp-Ro-NwZ" id="Wwf-81-b5n"/>
+                        <outlet property="singerLbl" destination="rbe-e6-plQ" id="4Ei-sd-djV"/>
+                        <outlet property="slider" destination="4Yq-mk-DeW" id="nw4-Q6-Tav"/>
+                        <outlet property="vCenterView" destination="JAI-uk-KpZ" id="98u-Tr-o4x"/>
+                        <outlet property="vSingerIcon" destination="Sck-TL-QmD" id="nks-03-wxl"/>
+                        <outletCollection property="lyricLbls" destination="cBD-QP-4a9" id="8o2-uv-7E0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
