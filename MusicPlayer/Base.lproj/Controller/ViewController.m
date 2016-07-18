@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Masonry.h"
 
 @interface ViewController ()
 #pragma mark - H&V
@@ -35,12 +36,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // 1. 毛玻璃效果
+    UIToolbar *toolbar = [[UIToolbar alloc] init];
+    toolbar.barStyle = UIBarStyleBlack;
+    [self.bgImageView addSubview:toolbar];  // 添加在bgImageView, 只让背景图毛玻璃效果, 否则所有的
+    [toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.mas_equalTo(self.bgImageView);
+    }];
+
+    // 2. 切圆角
+    self.vSingerIcon.layer.cornerRadius = self.vSingerIcon.bounds.size.width * 0.5;
+    self.vSingerIcon.layer.masksToBounds = YES;
 }
 
 - (IBAction)play {
