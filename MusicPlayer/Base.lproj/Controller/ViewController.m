@@ -69,7 +69,6 @@
     [self changeMusic]; // 启动时播放并显示信息
 
     self.lyricView.delegate = self;
-//    self.lyricView.lyrics = self.lyrics;
 }
 
 - (IBAction)play {
@@ -137,7 +136,7 @@
     self.lyrics = [HBLyricParser parserLyricWithFileName:music.lrc];
     self.currentLyricIdx = 0;   // 重置当前歌词索引. 屏蔽歌曲演唱完后切歌崩溃 (下一曲歌词长度比当前短时)
 
-    // 传值
+    // lyricView传值
     self.lyricView.lyrics = self.lyrics;
 }
 
@@ -205,6 +204,10 @@
     CGFloat progress = (playMgr.currentTime - lyric.time) / (nextLyric.time - lyric.time);
     [self.lyricLbls setValue:@(progress) forKey:@"progress"];   // HBLyricColorLabel
 //    [self.lyricLbls setValue:[UIColor magentaColor] forKey:@"currentColor"];
+
+    // 3. lyricView传值
+    self.lyricView.currentLyricIdx = self.currentLyricIdx;
+    self.lyricView.progress = progress;
 }
 
 - (IBAction)sliderValueChange {

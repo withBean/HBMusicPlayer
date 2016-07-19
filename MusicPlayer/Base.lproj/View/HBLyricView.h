@@ -26,5 +26,9 @@
 @property (nonatomic, strong) NSArray *lyrics;
 /// label高度
 @property (nonatomic, assign) CGFloat rowHeight;
+/// 当前播放歌词索引
+@property (nonatomic, assign) NSInteger currentLyricIdx;
+/// 当前播放歌词进度 (设置颜色)
+@property (nonatomic, assign) NSInteger progress;
 
 @end

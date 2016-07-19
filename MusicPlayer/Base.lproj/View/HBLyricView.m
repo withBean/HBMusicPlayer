@@ -76,8 +76,14 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
+
     // 设置显示内容
     self.hScrollView.contentSize = CGSizeMake(self.bounds.size.width * 2, self.bounds.size.height);
+    // 设置额外显示区域
+    CGFloat top = (self.bounds.size.height - self.rowHeight) * 0.5;
+    CGFloat bottom = top;
+    self.vScrollView.contentInset = UIEdgeInsetsMake(top, 0, bottom, 0);    // 开头和结尾时歌词能够位于中央
+    self.vScrollView.contentOffset = CGPointMake(0, -top);                  // 一开始就滚动到中央
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -91,7 +97,7 @@
     }
 }
 
-#pragma mark - setter & getter -> 显示歌词
+#pragma mark - setter & getter -> 显示歌词相关
 
 - (void)setLyrics:(NSArray *)lyrics {
     _lyrics = lyrics;
@@ -122,9 +128,32 @@
 
 - (CGFloat)rowHeight {
     if (!_rowHeight) {
-        _rowHeight = 30;
+        _rowHeight = 30.0;
     }
     return _rowHeight;
+}
+
+//- (NSInteger)currentLyricIdx {
+//
+//}
+
+- (void)setCurrentLyricIdx:(NSInteger)currentLyricIdx {
+    _currentLyricIdx = currentLyricIdx;
+
+    // 1. 自动向上滚动 -- 即修改contentOffset的y值
+    CGFloat offsetY = self.rowHeight * self.currentLyricIdx - self.vScrollView.contentInset.top;
+    self.vScrollView.contentOffset = CGPointMake(0, offsetY);
+    // 2. 当前播放字体变大
+    HBLyricColorLabel *lyricLbl = self.vScrollView.subviews[self.currentLyricIdx];
+    lyricLbl.font = [UIFont systemFontOfSize:17.0];
+}
+
+- (void)setProgress:(NSInteger)progress {
+    _progress = progress;
+
+    // 仅当前播放改变颜色
+    HBLyricColorLabel *lyricLbl = self.vScrollView.subviews[self.currentLyricIdx];
+    lyricLbl.progress = progress;
 }
 
 @end
