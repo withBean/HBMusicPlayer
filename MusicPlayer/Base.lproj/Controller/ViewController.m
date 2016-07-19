@@ -57,7 +57,16 @@
 - (IBAction)play {
     HBMusicModel *music = self.musics[self.currentMusicIdx];
     HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
-    [playMgr playMusicWithFileName:music.mp3];
+
+    // 播放与暂停
+    if (self.playBtn.selected == NO) {
+        self.playBtn.selected = YES;
+        [playMgr playMusicWithFileName:music.mp3];
+
+    } else if (self.playBtn.selected == YES) {
+        self.playBtn.selected = NO;
+        [playMgr pause];
+    }
 }
 
 - (IBAction)previous {
