@@ -12,6 +12,7 @@
 #import "HBMusicModel.h"
 #import "HBPlayManager.h"
 #import "HBLyricParser.h"
+#import "HBLyricModel.h"
 
 @interface ViewController ()
 #pragma mark - H&V
@@ -39,6 +40,8 @@
 @property (nonatomic, strong) NSTimer *timer;
 /// 歌词模型数组 (一个模型对应一行歌词)
 @property (nonatomic, strong) NSArray *lyrics;
+/// 当前歌词的索引
+@property (nonatomic, assign) NSInteger currentLyricIdx;
 
 @end
 
@@ -121,7 +124,7 @@
     self.playBtn.selected = NO;     // 解决切歌时播放/暂停交替的现象; 放在播放之前, 否则timer逻辑错误而多创建 -- 表现为暂停后图片仍旋转, 再次播放后2倍速度旋转加快, 再暂停后1倍速旋转. 当然还另一种思路为:每次创建timer前判断一下
     [self play];
 
-    self.durationLbl.text = [self stringWithTimeInterval:playMgr.duration];     // 须放在播放音乐之后, 才能获取duration值
+    self.durationLbl.text = [self stringWithTimeInterval:playMgr.duration];     // 须放在播放音乐之后, 才能获取duration值, 否则为上一曲的
 
     // 解析歌词
     self.lyrics = [HBLyricParser parserLyricWithFileName:music.lrc];
@@ -154,6 +157,27 @@
     self.slider.value = playMgr.currentTime / playMgr.duration;
     // 旋转头像
     self.vSingerIcon.transform = CGAffineTransformRotate(self.vSingerIcon.transform, M_PI * 0.0025);
+
+    // 更新歌词
+    [self updateLyric];
+}
+
+- (void)updateLyric {
+    HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
+    HBLyricModel *lyric = self.lyrics[self.currentLyricIdx];
+    HBLyricModel *nextLyric = self.lyrics[self.currentLyricIdx + 1];
+
+    // 调整进度
+    if (playMgr.currentTime < lyric.time) {
+        self.currentLyricIdx--;
+        [self updateLyric];
+    }
+    if (playMgr.currentTime > nextLyric.time) {
+        self.currentLyricIdx++;
+        [self updateLyric];
+    }
+    // 显示歌词 -- KVC赋值(H&V)
+    [self.lyricLbls setValue:lyric.content forKey:@"text"];
 }
 
 - (IBAction)sliderValueChange {

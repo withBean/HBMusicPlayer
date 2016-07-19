@@ -469,7 +469,8 @@
                         <outlet property="slider" destination="4Yq-mk-DeW" id="nw4-Q6-Tav"/>
                         <outlet property="vCenterView" destination="JAI-uk-KpZ" id="98u-Tr-o4x"/>
                         <outlet property="vSingerIcon" destination="Sck-TL-QmD" id="nks-03-wxl"/>
-                        <outletCollection property="lyricLbls" destination="cBD-QP-4a9" id="8o2-uv-7E0"/>
+                        <outletCollection property="lyricLbls" destination="yyF-wC-KcB" id="G4a-6V-iB3"/>
+                        <outletCollection property="lyricLbls" destination="cBD-QP-4a9" id="OId-M8-1rg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -77,7 +77,7 @@
         NSLog(@"%f %@", lyric.time, lyric.content);
     }
 
-    return nil;
+    return arrM;
 }
 
 @end
