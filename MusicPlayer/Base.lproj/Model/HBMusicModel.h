@@ -16,11 +16,17 @@ typedef enum {
 
 @interface HBMusicModel : NSObject
 
-@property (nonatomic, copy) NSString *image;    // 歌手图片
-@property (nonatomic, copy) NSString *lrc;      // 歌词
-@property (nonatomic, copy) NSString *mp3;      // 歌曲名.mp3
-@property (nonatomic, copy) NSString *name;     // 歌曲名
-@property (nonatomic, copy) NSString *singer;   // 歌手名
-@property (nonatomic, copy) NSString *album;    // 专辑名称
+/// 歌手图片
+@property (nonatomic, copy) NSString *image;
+/// 歌词
+@property (nonatomic, copy) NSString *lrc;
+/// 歌曲名.mp3
+@property (nonatomic, copy) NSString *mp3;
+/// 歌曲名
+@property (nonatomic, copy) NSString *name;
+/// 歌手名
+@property (nonatomic, copy) NSString *singer;
+/// 专辑名称
+@property (nonatomic, copy) NSString *album;
 
 @end

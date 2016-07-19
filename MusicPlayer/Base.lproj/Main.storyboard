@@ -318,10 +318,10 @@
                                     <constraint firstItem="7qt-uJ-mSo" firstAttribute="leading" secondItem="JAI-uk-KpZ" secondAttribute="leading" constant="20" id="7yU-GP-dgY"/>
                                     <constraint firstItem="Sck-TL-QmD" firstAttribute="top" secondItem="rbe-e6-plQ" secondAttribute="bottom" constant="50" id="J0F-i5-AWQ"/>
                                     <constraint firstItem="yyF-wC-KcB" firstAttribute="centerX" secondItem="JAI-uk-KpZ" secondAttribute="centerX" id="OLI-1l-vCx"/>
-                                    <constraint firstItem="yyF-wC-KcB" firstAttribute="top" secondItem="Sck-TL-QmD" secondAttribute="bottom" constant="50" id="URA-hg-lvw"/>
+                                    <constraint firstItem="yyF-wC-KcB" firstAttribute="top" secondItem="Sck-TL-QmD" secondAttribute="bottom" constant="40" id="URA-hg-lvw"/>
                                     <constraint firstItem="rbe-e6-plQ" firstAttribute="centerX" secondItem="JAI-uk-KpZ" secondAttribute="centerX" id="ZcK-L4-JpQ"/>
                                     <constraint firstItem="Sck-TL-QmD" firstAttribute="centerY" secondItem="JAI-uk-KpZ" secondAttribute="centerY" id="dct-ld-m1u"/>
-                                    <constraint firstAttribute="bottom" secondItem="7qt-uJ-mSo" secondAttribute="bottom" constant="20" id="kdD-9M-Jhn"/>
+                                    <constraint firstAttribute="bottom" secondItem="7qt-uJ-mSo" secondAttribute="bottom" constant="10" id="kdD-9M-Jhn"/>
                                     <constraint firstItem="Sck-TL-QmD" firstAttribute="centerX" secondItem="JAI-uk-KpZ" secondAttribute="centerX" id="nbd-va-FZg"/>
                                 </constraints>
                                 <variation key="default">

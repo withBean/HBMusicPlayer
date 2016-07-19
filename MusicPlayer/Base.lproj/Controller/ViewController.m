@@ -33,7 +33,9 @@
 
 #pragma mark - 私有属性
 @property (nonatomic, strong) NSArray *musics;
+/// 当前歌曲的索引
 @property (nonatomic, assign) NSInteger currentMusicIdx;
+
 @end
 
 @implementation ViewController
@@ -52,6 +54,8 @@
     // 2. 切圆角
     self.vSingerIcon.layer.cornerRadius = self.vSingerIcon.bounds.size.width * 0.5;
     self.vSingerIcon.layer.masksToBounds = YES;
+
+    [self changeMusic];
 }
 
 - (IBAction)play {
@@ -70,13 +74,31 @@
 }
 
 - (IBAction)previous {
+    self.currentMusicIdx--;
+
+    [self changeMusic];
 }
 
 - (IBAction)next {
+    self.currentMusicIdx++;
+
+    [self changeMusic];
 }
 
+/// 切歌
 - (void)changeMusic {
-    
+    HBMusicModel *music = self.musics[self.currentMusicIdx];
+    self.bgImageView.image = [UIImage imageNamed:music.image];
+    self.hSingerIcon.image = [UIImage imageNamed:music.image];
+    self.vSingerIcon.image = [UIImage imageNamed:music.image];
+    self.singerLbl.text = music.singer;
+    self.albumLbl.text = music.album;
+
+    HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
+    self.currentTimeLbl.text = [NSString stringWithFormat:@"%f", playMgr.currentTime];
+    self.durationLbl.text = [NSString stringWithFormat:@"%f", playMgr.duration];
+
+    [self play];
 }
 
 - (IBAction)sliderValueChange {

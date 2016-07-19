@@ -44,4 +44,17 @@ static HBPlayManager *_playManager;
     [self.audioPlayer pause];
 }
 
+#pragma mark - setter & getter
+- (NSTimeInterval)currentTime {
+    return self.audioPlayer.currentTime;
+}
+
+- (void)setCurrentTime:(NSTimeInterval)currentTime {
+    self.audioPlayer.currentTime = currentTime;       // 用@property声明的成员属性,相当于自动生成了setter和getter方法. 重写了set和get方法,与@property声明的成员属性就不是一个成员属性了,是另外一个实例变量,而这个实例变量(_currentTime)需要手动声明.
+}
+
+- (NSTimeInterval)duration {
+    return self.audioPlayer.duration;
+}
+
 @end
