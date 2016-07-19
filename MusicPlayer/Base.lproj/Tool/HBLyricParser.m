@@ -73,9 +73,9 @@
     // 7. 按时间排序
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES];
     [arrM sortUsingDescriptors:@[sort]];
-    for (HBLyricModel *lyric in arrM) {
-        NSLog(@"%f %@", lyric.time, lyric.content);
-    }
+//    for (HBLyricModel *lyric in arrM) {
+//        NSLog(@"%f %@", lyric.time, lyric.content);
+//    }
 
     return arrM;
 }

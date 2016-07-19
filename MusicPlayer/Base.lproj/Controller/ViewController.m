@@ -128,6 +128,7 @@
 
     // 解析歌词
     self.lyrics = [HBLyricParser parserLyricWithFileName:music.lrc];
+    self.currentLyricIdx = 0;   // 重置当前歌词索引. 屏蔽歌曲演唱完后切歌崩溃 (下一曲歌词长度比当前短时)
 }
 
 - (NSString *)stringWithTimeInterval:(NSTimeInterval)timeInterval {
@@ -165,18 +166,28 @@
 - (void)updateLyric {
     HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
     HBLyricModel *lyric = self.lyrics[self.currentLyricIdx];
-    HBLyricModel *nextLyric = self.lyrics[self.currentLyricIdx + 1];
+    HBLyricModel *nextLyric = nil;
 
-    // 调整进度
-    if (playMgr.currentTime < lyric.time) {
+    // 屏蔽最后一句数组越界而崩溃
+    /* index 27 beyond bounds [0 .. 26] */
+    if (self.currentLyricIdx >= self.lyrics.count - 1) {
+        nextLyric = [[HBLyricModel alloc] init];
+        nextLyric.time = playMgr.duration;  // 解决播放最后一句时崩溃
+    } else {
+        nextLyric = self.lyrics[self.currentLyricIdx + 1];
+    }
+
+    // 1.1 调整进度
+    /* index 18446744073709551615 beyond bounds [0 .. 26] */
+    if (playMgr.currentTime < lyric.time && self.currentLyricIdx != 0) {    // 解决切歌时崩溃(下一曲引起), -1数组越界(有的歌不是[00:00.00]). `&& self.currentLyricIdx != 0`
         self.currentLyricIdx--;
         [self updateLyric];
     }
-    if (playMgr.currentTime > nextLyric.time) {
+    if (playMgr.currentTime > nextLyric.time && self.currentLyricIdx != self.lyrics.count - 1) {    // 解决切歌时崩溃(当前歌最后一句歌词导致), `&& self.currentLyricIdx != self.lyrics.count - 1`
         self.currentLyricIdx++;
         [self updateLyric];
     }
-    // 显示歌词 -- KVC赋值(H&V)
+    // 1.2 显示歌词 -- KVC赋值(H&V)
     [self.lyricLbls setValue:lyric.content forKey:@"text"];
 }
 
