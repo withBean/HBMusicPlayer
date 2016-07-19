@@ -7,12 +7,15 @@
 //
 
 #import "HBLyricParser.h"
+#import "NSDateFormatter+shared.h"
 #import "HBLyricModel.h"
 
 @implementation HBLyricParser
 
 + (NSArray *)parserLyricWithFileName:(NSString *)fileName {
-// 目标: 截取时间和歌词内容
+    // 目标: 截取时间和歌词内容
+
+    NSMutableArray *arrM = [NSMutableArray array];
 
     // 1. 加载歌词文件
     NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:nil];
@@ -39,13 +42,40 @@
         NSTextCheckingResult *lastResult = [results lastObject];
         // 5.2 截取歌词内容
         NSString *content = [lineStr substringFromIndex:lastResult.range.location + lastResult.range.length];
-        NSLog(@"%@", content);  // 仍然听见小提琴如泣似诉再挑逗
-        
-        // 6. 获取时间
+//        NSLog(@"%@", content);  // 仍然听见小提琴如泣似诉再挑逗
 
+        // 6. 获取时间
+        for (NSTextCheckingResult *result in results) {
+            // 6.1 获取每一个时间字符串
+            NSString *timeStr = [lineStr substringWithRange:result.range];
+//            NSLog(@"%@", timeStr);  // [00:23.00]
+
+            // 6.2 将字符串转换成NSTimeInterval
+//            NSDateFormatter *dateF = [[NSDateFormatter alloc] init];    // NSDateFormatter本来性能就不好, 且forin多层嵌套, 考虑为单例以优化性能
+            // 单例模式优化性能
+            NSDateFormatter *dateFormatter = [NSDateFormatter sharedDateFormatter];
+            // 转换为NSDate
+            dateFormatter.dateFormat = @"[mm:ss.SS]";   // ∵timeStr中含`[]`
+            NSDate *timeDate = [dateFormatter dateFromString:timeStr];
+            NSDate *initDate = [dateFormatter dateFromString:@"[00:00.00]"];
+            // 比较时间, 转为NSTimeInterval
+            NSTimeInterval time = [timeDate timeIntervalSinceDate:initDate];
+//            NSLog(@"%f", time);
+
+            // 给模型赋值并添加到数组
+            HBLyricModel *lyric = [[HBLyricModel alloc] init];
+            lyric.content = content;
+            lyric.time = time;
+            [arrM addObject:lyric];
+        }
     }
 
     // 7. 按时间排序
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"time" ascending:YES];
+    [arrM sortUsingDescriptors:@[sort]];
+    for (HBLyricModel *lyric in arrM) {
+        NSLog(@"%f %@", lyric.time, lyric.content);
+    }
 
     return nil;
 }

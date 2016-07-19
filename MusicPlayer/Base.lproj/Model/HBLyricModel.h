@@ -15,6 +15,6 @@
 /// 某行歌词的内容
 @property (nonatomic, copy) NSString *content;
 /// 某行歌词开始的时间
-@property (nonatomic, assign) NSTimeInterval beginTime;
+@property (nonatomic, assign) NSTimeInterval time;
 
 @end

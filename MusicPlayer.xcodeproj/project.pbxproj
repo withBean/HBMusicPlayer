@@ -59,6 +59,7 @@
 		26A3C0411D3DB8C400396ED0 /* HBPlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3C0401D3DB8C400396ED0 /* HBPlayManager.m */; };
 		26A3C0441D3E021700396ED0 /* HBLyricModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3C0431D3E021700396ED0 /* HBLyricModel.m */; };
 		26A3C0471D3E02F900396ED0 /* HBLyricParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3C0461D3E02F900396ED0 /* HBLyricParser.m */; };
+		26A3C04A1D3E0ED200396ED0 /* NSDateFormatter+shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3C0491D3E0ED200396ED0 /* NSDateFormatter+shared.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -148,6 +149,8 @@
 		26A3C0431D3E021700396ED0 /* HBLyricModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBLyricModel.m; sourceTree = "<group>"; };
 		26A3C0451D3E02F900396ED0 /* HBLyricParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBLyricParser.h; sourceTree = "<group>"; };
 		26A3C0461D3E02F900396ED0 /* HBLyricParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBLyricParser.m; sourceTree = "<group>"; };
+		26A3C0481D3E0ED200396ED0 /* NSDateFormatter+shared.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+shared.h"; sourceTree = "<group>"; };
+		26A3C0491D3E0ED200396ED0 /* NSDateFormatter+shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+shared.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +239,8 @@
 		26A3BF061D3CA4AA00396ED0 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				26A3C0481D3E0ED200396ED0 /* NSDateFormatter+shared.h */,
+				26A3C0491D3E0ED200396ED0 /* NSDateFormatter+shared.m */,
 			);
 			name = Category;
 			path = Base.lproj/Category;
@@ -464,6 +469,7 @@
 				26A3BF4F1D3CA50800396ED0 /* MJProperty.m in Sources */,
 				26A3BF531D3CA50800396ED0 /* NSObject+MJCoding.m in Sources */,
 				26A3C0441D3E021700396ED0 /* HBLyricModel.m in Sources */,
+				26A3C04A1D3E0ED200396ED0 /* NSDateFormatter+shared.m in Sources */,
 				26A3BF591D3CBD4800396ED0 /* HBMusicModel.m in Sources */,
 				26A3BF4E1D3CA50800396ED0 /* MJFoundation.m in Sources */,
 				26A3BF431D3CA50800396ED0 /* MASCompositeConstraint.m in Sources */,
