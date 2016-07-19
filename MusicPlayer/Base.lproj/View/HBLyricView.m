@@ -22,6 +22,8 @@
 
 @implementation HBLyricView
 
+@synthesize currentLyricIdx = _currentLyricIdx;   // 用@property声明的成员属性,相当于自动生成了setter和getter方法. 重写了set和get方法,与@property声明的成员属性就不是一个成员属性了,是另外一个实例变量,而这个实例变量(_currentTime)需要手动声明
+
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
     self = [super initWithCoder:coder];
@@ -133,9 +135,15 @@
     return _rowHeight;
 }
 
-//- (NSInteger)currentLyricIdx {
-//
-//}
+/* index 58 beyond bounds [0 .. 57] */
+- (NSInteger)currentLyricIdx {
+    if (_currentLyricIdx < 0) {
+        _currentLyricIdx = 0;
+    } else if (_currentLyricIdx > self.lyrics.count - 1) {
+        _currentLyricIdx = self.lyrics.count - 1;
+    }
+    return _currentLyricIdx;
+}
 
 - (void)setCurrentLyricIdx:(NSInteger)currentLyricIdx {
 
