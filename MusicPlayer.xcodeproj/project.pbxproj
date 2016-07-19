@@ -55,6 +55,7 @@
 		26A3BF541D3CA50800396ED0 /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3BF3E1D3CA50800396ED0 /* NSObject+MJKeyValue.m */; };
 		26A3BF551D3CA50800396ED0 /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3BF401D3CA50800396ED0 /* NSObject+MJProperty.m */; };
 		26A3BF561D3CA50800396ED0 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3BF421D3CA50800396ED0 /* NSString+MJExtension.m */; };
+		26A3BF591D3CBD4800396ED0 /* HBMusicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3BF581D3CBD4800396ED0 /* HBMusicModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +137,8 @@
 		26A3BF401D3CA50800396ED0 /* NSObject+MJProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MJProperty.m"; sourceTree = "<group>"; };
 		26A3BF411D3CA50800396ED0 /* NSString+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MJExtension.h"; sourceTree = "<group>"; };
 		26A3BF421D3CA50800396ED0 /* NSString+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MJExtension.m"; sourceTree = "<group>"; };
+		26A3BF571D3CBD4800396ED0 /* HBMusicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBMusicModel.h; sourceTree = "<group>"; };
+		26A3BF581D3CBD4800396ED0 /* HBMusicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBMusicModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +255,8 @@
 		26A3BF0B1D3CA4AA00396ED0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				26A3BF571D3CBD4800396ED0 /* HBMusicModel.h */,
+				26A3BF581D3CBD4800396ED0 /* HBMusicModel.m */,
 			);
 			name = Model;
 			path = Base.lproj/Model;
@@ -443,6 +448,7 @@
 				26A3BF4D1D3CA50800396ED0 /* MJExtensionConst.m in Sources */,
 				26A3BF4F1D3CA50800396ED0 /* MJProperty.m in Sources */,
 				26A3BF531D3CA50800396ED0 /* NSObject+MJCoding.m in Sources */,
+				26A3BF591D3CBD4800396ED0 /* HBMusicModel.m in Sources */,
 				26A3BF4E1D3CA50800396ED0 /* MJFoundation.m in Sources */,
 				26A3BF431D3CA50800396ED0 /* MASCompositeConstraint.m in Sources */,
 				26A3BF501D3CA50800396ED0 /* MJPropertyKey.m in Sources */,

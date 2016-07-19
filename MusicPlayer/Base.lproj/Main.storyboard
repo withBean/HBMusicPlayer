@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="李克勤.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2mR-XI-WBn" userLabel="bgImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="李克勤.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="2mR-XI-WBn" userLabel="bgImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="riH-ZJ-Xm7" userLabel="bottom">
@@ -40,6 +40,9 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" image="player_btn_pre_normal"/>
                                         <state key="highlighted" image="player_btn_pre_highlight"/>
+                                        <connections>
+                                            <action selector="previous" destination="BYZ-38-t0r" eventType="touchUpInside" id="dhP-Xy-pWp"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6o-L2-kqz" userLabel="currentTime">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -90,6 +93,9 @@
                                                 <include reference="yod-Fk-UWt"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="play" destination="BYZ-38-t0r" eventType="touchUpInside" id="F3G-sa-qB4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -243,12 +249,12 @@
                                         <exclude reference="cBD-QP-4a9"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <exclude reference="KWS-Pc-kKh"/>
+                                        <exclude reference="qhE-bU-fkB"/>
                                         <exclude reference="73h-ul-mF2"/>
                                         <exclude reference="E77-a0-jEd"/>
                                         <exclude reference="bj7-Jk-Lpg"/>
                                         <exclude reference="w6P-Eu-DAo"/>
-                                        <exclude reference="KWS-Pc-kKh"/>
-                                        <exclude reference="qhE-bU-fkB"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
@@ -257,12 +263,12 @@
                                         <include reference="cBD-QP-4a9"/>
                                     </mask>
                                     <mask key="constraints">
+                                        <include reference="KWS-Pc-kKh"/>
+                                        <include reference="qhE-bU-fkB"/>
                                         <include reference="73h-ul-mF2"/>
                                         <include reference="E77-a0-jEd"/>
                                         <include reference="bj7-Jk-Lpg"/>
                                         <include reference="w6P-Eu-DAo"/>
-                                        <include reference="KWS-Pc-kKh"/>
-                                        <include reference="qhE-bU-fkB"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -390,6 +396,9 @@
                                 <exclude reference="ARC-n1-RbP"/>
                                 <exclude reference="KyX-hr-iOS"/>
                                 <exclude reference="pEh-U2-MPa"/>
+                                <exclude reference="VCs-oH-g0Q"/>
+                                <exclude reference="bNM-54-Yqt"/>
+                                <exclude reference="lqe-rg-xbt"/>
                                 <exclude reference="Atj-zq-uMV"/>
                                 <exclude reference="Cc9-oC-SOH"/>
                                 <exclude reference="Fbb-zK-wlu"/>
@@ -398,9 +407,6 @@
                                 <exclude reference="dff-KS-XVb"/>
                                 <exclude reference="kJ4-Pk-8XH"/>
                                 <exclude reference="zH0-uT-zcU"/>
-                                <exclude reference="VCs-oH-g0Q"/>
-                                <exclude reference="bNM-54-Yqt"/>
-                                <exclude reference="lqe-rg-xbt"/>
                                 <exclude reference="B5V-OK-QuL"/>
                                 <exclude reference="JUp-j0-L39"/>
                                 <exclude reference="QPL-Cj-tSg"/>
@@ -416,13 +422,13 @@
                                 <include reference="Jno-lP-TI0"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="VCs-oH-g0Q"/>
+                                <include reference="bNM-54-Yqt"/>
+                                <include reference="lqe-rg-xbt"/>
                                 <include reference="OF9-3F-948"/>
                                 <include reference="cSk-yN-dBi"/>
                                 <include reference="kJ4-Pk-8XH"/>
                                 <include reference="zH0-uT-zcU"/>
-                                <include reference="VCs-oH-g0Q"/>
-                                <include reference="bNM-54-Yqt"/>
-                                <include reference="lqe-rg-xbt"/>
                                 <include reference="JUp-j0-L39"/>
                                 <include reference="deO-Ke-hdd"/>
                                 <include reference="p51-kH-pTg"/>

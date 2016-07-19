@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "Masonry.h"
+#import "MJExtension.h"
+#import "HBMusicModel.h"
 
 @interface ViewController ()
 #pragma mark - H&V
@@ -29,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *albumLbl;
 
 #pragma mark - 私有属性
+@property (nonatomic, strong) NSArray *musics;
 
 @end
 
@@ -59,7 +62,19 @@
 - (IBAction)next {
 }
 
+- (void)changeMusic {
+    
+}
+
 - (IBAction)sliderValueChange {
+}
+
+#pragma mark - lazy load
+- (NSArray *)musics {
+    if (!_musics) {
+        _musics = [HBMusicModel objectArrayWithFilename:@"mlist.plist"];
+    }
+    return _musics;
 }
 
 @end
