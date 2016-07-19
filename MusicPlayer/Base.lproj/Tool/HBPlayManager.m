@@ -28,11 +28,14 @@ static HBPlayManager *_playManager;
 
 - (void)playMusicWithFileName:(NSString *)fileName {
 
-    // 创建播放器
-    NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName withExtension:nil];
-    self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
-    [self.audioPlayer prepareToPlay];
+    if (![self.fileName isEqualToString:fileName]) {    // 解决暂停后播放从头开始的bug
+        // 创建播放器
+        NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName withExtension:nil];
+        self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+        [self.audioPlayer prepareToPlay];
 
+        self.fileName = fileName;
+    }
     // 播放
     [self.audioPlayer play];
 }
