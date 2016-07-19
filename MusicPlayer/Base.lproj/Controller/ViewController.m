@@ -55,7 +55,7 @@
     self.vSingerIcon.layer.cornerRadius = self.vSingerIcon.bounds.size.width * 0.5;
     self.vSingerIcon.layer.masksToBounds = YES;
 
-    [self changeMusic];
+    [self changeMusic]; // 启动时播放并显示信息
 }
 
 - (IBAction)play {
@@ -103,10 +103,10 @@
     self.albumLbl.text = music.album;
 
     HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
-    self.currentTimeLbl.text = [self stringWithTimeInterval:playMgr.currentTime];
-    self.durationLbl.text = [self stringWithTimeInterval:playMgr.duration];
 
     [self play];
+    self.currentTimeLbl.text = [self stringWithTimeInterval:playMgr.currentTime];
+    self.durationLbl.text = [self stringWithTimeInterval:playMgr.duration];     // 须放在播放音乐之后, 才能获取duration值
 
     self.playBtn.selected = NO;     // 解决切歌时播放/暂停交替的现象
 }
