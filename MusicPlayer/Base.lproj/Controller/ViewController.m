@@ -189,6 +189,12 @@
     }
     // 1.2 显示歌词 -- KVC赋值(H&V)
     [self.lyricLbls setValue:lyric.content forKey:@"text"];
+
+    // 2. 歌词颜色
+    // 进度 = (当前播放时间 - 歌词开始时间) / (下行歌词开始时间 - 这行歌词开始时间)
+    CGFloat progress = (playMgr.currentTime - lyric.time) / (nextLyric.time - lyric.time);
+    [self.lyricLbls setValue:@(progress) forKey:@"progress"];   // HBLyricColorLabel
+//    [self.lyricLbls setValue:[UIColor magentaColor] forKey:@"currentColor"];
 }
 
 - (IBAction)sliderValueChange {
