@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		265FE8AC1D3E82310097335E /* HBSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 265FE8AB1D3E82310097335E /* HBSliderView.m */; };
+		265FE8AF1D3E895B0097335E /* HBTimeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 265FE8AE1D3E895B0097335E /* HBTimeTool.m */; };
 		267725861D3B685C008689EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 267725851D3B685C008689EC /* main.m */; };
 		2677258F1D3B685C008689EC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2677258D1D3B685C008689EC /* Main.storyboard */; };
 		267725911D3B685C008689EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 267725901D3B685C008689EC /* Assets.xcassets */; };
@@ -65,6 +67,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		265FE8AA1D3E82310097335E /* HBSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBSliderView.h; sourceTree = "<group>"; };
+		265FE8AB1D3E82310097335E /* HBSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBSliderView.m; sourceTree = "<group>"; };
+		265FE8AD1D3E895B0097335E /* HBTimeTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBTimeTool.h; sourceTree = "<group>"; };
+		265FE8AE1D3E895B0097335E /* HBTimeTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBTimeTool.m; sourceTree = "<group>"; };
 		267725811D3B685C008689EC /* MusicPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		267725851D3B685C008689EC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2677258E1D3B685C008689EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -301,6 +307,8 @@
 				26A3C0401D3DB8C400396ED0 /* HBPlayManager.m */,
 				26A3C0451D3E02F900396ED0 /* HBLyricParser.h */,
 				26A3C0461D3E02F900396ED0 /* HBLyricParser.m */,
+				265FE8AD1D3E895B0097335E /* HBTimeTool.h */,
+				265FE8AE1D3E895B0097335E /* HBTimeTool.m */,
 			);
 			name = Tool;
 			path = Base.lproj/Tool;
@@ -314,6 +322,8 @@
 				26A3C04C1D3E295400396ED0 /* HBLyricColorLabel.m */,
 				26A3C04E1D3E3E5C00396ED0 /* HBLyricView.h */,
 				26A3C04F1D3E3E5C00396ED0 /* HBLyricView.m */,
+				265FE8AA1D3E82310097335E /* HBSliderView.h */,
+				265FE8AB1D3E82310097335E /* HBSliderView.m */,
 			);
 			name = View;
 			path = Base.lproj/View;
@@ -474,6 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26A3BF4A1D3CA50800396ED0 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				265FE8AC1D3E82310097335E /* HBSliderView.m in Sources */,
 				26A3BF481D3CA50800396ED0 /* MASViewConstraint.m in Sources */,
 				26A3BF4D1D3CA50800396ED0 /* MJExtensionConst.m in Sources */,
 				26A3BF4F1D3CA50800396ED0 /* MJProperty.m in Sources */,
@@ -502,6 +513,7 @@
 				26A3C0501D3E3E5C00396ED0 /* HBLyricView.m in Sources */,
 				26A3BF471D3CA50800396ED0 /* MASViewAttribute.m in Sources */,
 				26A3BF441D3CA50800396ED0 /* MASConstraint.m in Sources */,
+				265FE8AF1D3E895B0097335E /* HBTimeTool.m in Sources */,
 				26A3BF451D3CA50800396ED0 /* MASConstraintMaker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

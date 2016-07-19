@@ -14,6 +14,7 @@
 #import "HBLyricParser.h"
 #import "HBLyricModel.h"
 #import "HBLyricView.h"
+#import "HBTimeTool.h"
 
 @interface ViewController ()<HBLyricViewDelegate>
 #pragma mark - H&V
@@ -130,7 +131,7 @@
     self.playBtn.selected = NO;     // 解决切歌时播放/暂停交替的现象; 放在播放之前, 否则timer逻辑错误而多创建 -- 表现为暂停后图片仍旋转, 再次播放后2倍速度旋转加快, 再暂停后1倍速旋转. 当然还另一种思路为:每次创建timer前判断一下
     [self play];
 
-    self.durationLbl.text = [self stringWithTimeInterval:playMgr.duration];     // 须放在播放音乐之后, 才能获取duration值, 否则为上一曲的
+    self.durationLbl.text = [HBTimeTool stringWithTimeInterval:playMgr.duration];     // 须放在播放音乐之后, 才能获取duration值, 否则为上一曲的
 
     // 解析歌词
     self.lyrics = [HBLyricParser parserLyricWithFileName:music.lrc];
@@ -138,12 +139,6 @@
 
     // lyricView传值
     self.lyricView.lyrics = self.lyrics;
-}
-
-- (NSString *)stringWithTimeInterval:(NSTimeInterval)timeInterval {
-    int minute = timeInterval / 60;
-    int second = (int)timeInterval % 60;
-    return [NSString stringWithFormat:@"%02d:%02d", minute, second];
 }
 
 #pragma mark - 进度相关
@@ -162,7 +157,7 @@
 /// 更新进度 -- timer事件(每0.1s调用一次)
 - (void)updateProgress {
     HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
-    self.currentTimeLbl.text = [self stringWithTimeInterval:playMgr.currentTime];
+    self.currentTimeLbl.text = [HBTimeTool stringWithTimeInterval:playMgr.currentTime];
     // value 0~1
     self.slider.value = playMgr.currentTime / playMgr.duration;
     // 旋转头像

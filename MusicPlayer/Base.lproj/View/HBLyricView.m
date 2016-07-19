@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "HBLyricModel.h"
 #import "HBLyricColorLabel.h"
+#import "HBSliderView.h"
 
 @interface HBLyricView ()<UIScrollViewDelegate>
 
@@ -17,12 +18,14 @@
 @property (nonatomic, strong) UIScrollView *hScrollView;
 /// 竖向滚动的ScrollView, 显示歌词
 @property (nonatomic, strong) UIScrollView *vScrollView;
+/// 歌词界面滚动时的视图
+@property (nonatomic, strong) HBSliderView *sliderView;
 
 @end
 
 @implementation HBLyricView
 
-@synthesize currentLyricIdx = _currentLyricIdx;   // 用@property声明的成员属性,相当于自动生成了setter和getter方法. 重写了set和get方法,与@property声明的成员属性就不是一个成员属性了,是另外一个实例变量,而这个实例变量(_currentTime)需要手动声明
+@synthesize currentLyricIdx = _currentLyricIdx;   // 用@property声明的成员属性,相当于自动生成了setter和getter方法. 重写了set和get方法,与@property声明的成员属性就不是一个成员属性了,是另外一个实例变量,而这个实例变量(_currentLyricIdx)需要手动声明
 
 - (instancetype)initWithCoder:(NSCoder *)coder
 {
@@ -59,6 +62,7 @@
     [self.hScrollView addSubview:vScrollView];
     self.vScrollView = vScrollView;
 
+    // 约束
     [self.hScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self);
     }];
@@ -68,11 +72,20 @@
 //        make.left.mas_equalTo(self.hScrollView.bounds.size.width);
 //        make.width.mas_equalTo(self.hScrollView.bounds.size.width);
 //    }];   // why don't work?
-
     [self.vScrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo([UIScreen mainScreen].bounds.size.width);
         make.top.bottom.mas_equalTo(self);
         make.width.mas_equalTo([UIScreen mainScreen].bounds.size.width);
+    }];
+
+    // 3. sliderView
+    HBSliderView *sliderView = [[HBSliderView alloc] init];
+    [self addSubview:sliderView];   // 为什么添加到self.vScrollView上时无效??!
+    self.sliderView = sliderView;
+
+    [self.sliderView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.centerY.mas_equalTo(self.vScrollView); 
+        make.height.mas_equalTo(self.rowHeight);
     }];
 }
 
@@ -92,7 +105,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat progress = self.hScrollView.contentOffset.x / self.bounds.size.width;
-    NSLog(@"%f", progress);
+//    NSLog(@"%f", progress);
 
     if ([self.delegate respondsToSelector:@selector(scrollLyricView:withProgress:)]) {
         [self.delegate scrollLyricView:self withProgress:progress];
