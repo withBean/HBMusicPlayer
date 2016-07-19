@@ -46,7 +46,7 @@
     // 1. 毛玻璃效果
     UIToolbar *toolbar = [[UIToolbar alloc] init];
     toolbar.barStyle = UIBarStyleBlack;
-    [self.bgImageView addSubview:toolbar];  // 添加在bgImageView, 只让背景图毛玻璃效果, 否则所有的
+    [self.bgImageView addSubview:toolbar];  // 添加在bgImageView, 只让背景图毛玻璃效果
     [toolbar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.bgImageView);
     }];
@@ -63,7 +63,7 @@
     HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
 
     // 播放与暂停
-    if (self.playBtn.selected == NO) {
+    if (self.playBtn.selected == NO) {      // 不要写self.playBtn.selected != self.playBtn.selected, 因为切歌时也在调用play, 会导致紊乱
         self.playBtn.selected = YES;
         [playMgr playMusicWithFileName:music.mp3];
 
@@ -74,13 +74,21 @@
 }
 
 - (IBAction)previous {
-    self.currentMusicIdx--;
+    if (self.currentMusicIdx > 0) {     // 解决数组越界的问题
+        self.currentMusicIdx--;
+    } else {
+        self.currentMusicIdx = self.musics.count - 1;
+    }
 
     [self changeMusic];
 }
 
 - (IBAction)next {
-    self.currentMusicIdx++;
+    if (self.currentMusicIdx < self.musics.count - 1) {
+        self.currentMusicIdx++;
+    } else {
+        self.currentMusicIdx = 0;
+    }
 
     [self changeMusic];
 }
@@ -91,14 +99,22 @@
     self.bgImageView.image = [UIImage imageNamed:music.image];
     self.hSingerIcon.image = [UIImage imageNamed:music.image];
     self.vSingerIcon.image = [UIImage imageNamed:music.image];
-    self.singerLbl.text = music.singer;
+    self.singerLbl.text = [NSString stringWithFormat:@"%@ - %@", music.singer, music.name];
     self.albumLbl.text = music.album;
 
     HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
-    self.currentTimeLbl.text = [NSString stringWithFormat:@"%f", playMgr.currentTime];
-    self.durationLbl.text = [NSString stringWithFormat:@"%f", playMgr.duration];
+    self.currentTimeLbl.text = [self stringWithTimeInterval:playMgr.currentTime];
+    self.durationLbl.text = [self stringWithTimeInterval:playMgr.duration];
 
     [self play];
+
+    self.playBtn.selected = NO;     // 解决切歌时播放/暂停交替的现象
+}
+
+- (NSString *)stringWithTimeInterval:(NSTimeInterval)timeInterval {
+    int minute = timeInterval / 60;
+    int second = (int)timeInterval % 60;
+    return [NSString stringWithFormat:@"%02d:%02d", minute, second];
 }
 
 - (IBAction)sliderValueChange {
