@@ -80,7 +80,7 @@
 }
 
 - (IBAction)previous {
-    if (self.currentMusicIdx > 0) {     // 解决数组越界的问题
+    if (self.currentMusicIdx > 0) {     // 解决歌曲索引的数组越界的问题
         self.currentMusicIdx--;
     } else {
         self.currentMusicIdx = self.musics.count - 1;
@@ -110,14 +110,13 @@
 
     HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
 
-    [self stopUpdateProgress];      // 放在播放之前,
+    [self stopUpdateProgress];      // 放在播放之前, 解决暂停后切歌图片旋转问题
     self.vSingerIcon.transform = CGAffineTransformIdentity;
 
+    self.playBtn.selected = NO;     // 解决切歌时播放/暂停交替的现象; 放在播放之前, 否则timer逻辑错误而多创建 -- 表现为暂停后图片仍旋转, 再次播放后2倍速度旋转加快, 再暂停后1倍速旋转. 当然还另一种思路为:每次创建timer前判断一下
     [self play];
-    self.playBtn.selected = NO;     // 解决切歌时播放/暂停交替的现象; 放在播放之前, 否则timer逻辑错误而多创建 -- 表现为暂停后图片仍旋转, 再次播放后2倍速度旋转加快, 再暂停后1倍速旋转. 当然还另一种思路为创建timer前判断一下
 
     self.durationLbl.text = [self stringWithTimeInterval:playMgr.duration];     // 须放在播放音乐之后, 才能获取duration值
-
 }
 
 - (NSString *)stringWithTimeInterval:(NSTimeInterval)timeInterval {
@@ -139,6 +138,7 @@
     self.timer = nil;
 }
 
+/// 更新进度 -- timer事件(每0.1s调用一次)
 - (void)updateProgress {
     HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
     self.currentTimeLbl.text = [self stringWithTimeInterval:playMgr.currentTime];
@@ -157,7 +157,7 @@
 #pragma mark - lazy load
 - (NSArray *)musics {
     if (!_musics) {
-        // MJExtension实现文件转模型
+        // MJExtension框架实现文件转模型
         _musics = [HBMusicModel objectArrayWithFilename:@"mlist.plist"];
     }
     return _musics;
