@@ -57,6 +57,8 @@
 		26A3BF561D3CA50800396ED0 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3BF421D3CA50800396ED0 /* NSString+MJExtension.m */; };
 		26A3BF591D3CBD4800396ED0 /* HBMusicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3BF581D3CBD4800396ED0 /* HBMusicModel.m */; };
 		26A3C0411D3DB8C400396ED0 /* HBPlayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3C0401D3DB8C400396ED0 /* HBPlayManager.m */; };
+		26A3C0441D3E021700396ED0 /* HBLyricModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3C0431D3E021700396ED0 /* HBLyricModel.m */; };
+		26A3C0471D3E02F900396ED0 /* HBLyricParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3C0461D3E02F900396ED0 /* HBLyricParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +144,10 @@
 		26A3BF581D3CBD4800396ED0 /* HBMusicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBMusicModel.m; sourceTree = "<group>"; };
 		26A3C03F1D3DB8C400396ED0 /* HBPlayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBPlayManager.h; sourceTree = "<group>"; };
 		26A3C0401D3DB8C400396ED0 /* HBPlayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBPlayManager.m; sourceTree = "<group>"; };
+		26A3C0421D3E021700396ED0 /* HBLyricModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBLyricModel.h; sourceTree = "<group>"; };
+		26A3C0431D3E021700396ED0 /* HBLyricModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBLyricModel.m; sourceTree = "<group>"; };
+		26A3C0451D3E02F900396ED0 /* HBLyricParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBLyricParser.h; sourceTree = "<group>"; };
+		26A3C0461D3E02F900396ED0 /* HBLyricParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBLyricParser.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +266,8 @@
 			children = (
 				26A3BF571D3CBD4800396ED0 /* HBMusicModel.h */,
 				26A3BF581D3CBD4800396ED0 /* HBMusicModel.m */,
+				26A3C0421D3E021700396ED0 /* HBLyricModel.h */,
+				26A3C0431D3E021700396ED0 /* HBLyricModel.m */,
 			);
 			name = Model;
 			path = Base.lproj/Model;
@@ -280,6 +288,8 @@
 			children = (
 				26A3C03F1D3DB8C400396ED0 /* HBPlayManager.h */,
 				26A3C0401D3DB8C400396ED0 /* HBPlayManager.m */,
+				26A3C0451D3E02F900396ED0 /* HBLyricParser.h */,
+				26A3C0461D3E02F900396ED0 /* HBLyricParser.m */,
 			);
 			name = Tool;
 			path = Base.lproj/Tool;
@@ -453,6 +463,7 @@
 				26A3BF4D1D3CA50800396ED0 /* MJExtensionConst.m in Sources */,
 				26A3BF4F1D3CA50800396ED0 /* MJProperty.m in Sources */,
 				26A3BF531D3CA50800396ED0 /* NSObject+MJCoding.m in Sources */,
+				26A3C0441D3E021700396ED0 /* HBLyricModel.m in Sources */,
 				26A3BF591D3CBD4800396ED0 /* HBMusicModel.m in Sources */,
 				26A3BF4E1D3CA50800396ED0 /* MJFoundation.m in Sources */,
 				26A3BF431D3CA50800396ED0 /* MASCompositeConstraint.m in Sources */,
@@ -465,6 +476,7 @@
 				26A3BF551D3CA50800396ED0 /* NSObject+MJProperty.m in Sources */,
 				26A3C0411D3DB8C400396ED0 /* HBPlayManager.m in Sources */,
 				26A3BF461D3CA50800396ED0 /* MASLayoutConstraint.m in Sources */,
+				26A3C0471D3E02F900396ED0 /* HBLyricParser.m in Sources */,
 				26A3BF121D3CA4AA00396ED0 /* AppDelegate.m in Sources */,
 				26A3BF4C1D3CA50800396ED0 /* ViewController+MASAdditions.m in Sources */,
 				26A3BF521D3CA50800396ED0 /* NSObject+MJClass.m in Sources */,

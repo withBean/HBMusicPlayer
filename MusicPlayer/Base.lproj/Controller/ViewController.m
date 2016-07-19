@@ -11,6 +11,7 @@
 #import "MJExtension.h"
 #import "HBMusicModel.h"
 #import "HBPlayManager.h"
+#import "HBLyricParser.h"
 
 @interface ViewController ()
 #pragma mark - H&V
@@ -35,8 +36,9 @@
 @property (nonatomic, strong) NSArray *musics;
 /// 当前歌曲的索引
 @property (nonatomic, assign) NSInteger currentMusicIdx;
-
 @property (nonatomic, strong) NSTimer *timer;
+/// 歌词模型数组 (一个模型对应一行歌词)
+@property (nonatomic, strong) NSArray *lyrics;
 
 @end
 
@@ -120,6 +122,9 @@
     [self play];
 
     self.durationLbl.text = [self stringWithTimeInterval:playMgr.duration];     // 须放在播放音乐之后, 才能获取duration值
+
+    // 解析歌词
+    self.lyrics = [HBLyricParser parserLyricWithFileName:music.lrc];
 }
 
 - (NSString *)stringWithTimeInterval:(NSTimeInterval)timeInterval {
