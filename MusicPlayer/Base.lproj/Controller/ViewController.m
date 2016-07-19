@@ -145,6 +145,9 @@
 }
 
 - (IBAction)sliderValueChange {
+    HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
+    // 进度条位置对应的时间 = 进度条value(0~1) * 歌曲总时长
+    playMgr.currentTime = self.slider.value * playMgr.duration;
 }
 
 #pragma mark - lazy load
