@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "MJExtension.h"
 #import "HBMusicModel.h"
+#import "HBPlayManager.h"
 
 @interface ViewController ()
 #pragma mark - H&V
@@ -32,7 +33,7 @@
 
 #pragma mark - 私有属性
 @property (nonatomic, strong) NSArray *musics;
-
+@property (nonatomic, assign) NSInteger currentMusicIdx;
 @end
 
 @implementation ViewController
@@ -54,6 +55,9 @@
 }
 
 - (IBAction)play {
+    HBMusicModel *music = self.musics[self.currentMusicIdx];
+    HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
+    [playMgr playMusicWithFileName:music.mp3];
 }
 
 - (IBAction)previous {
