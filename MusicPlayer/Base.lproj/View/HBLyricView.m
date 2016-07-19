@@ -8,6 +8,8 @@
 
 #import "HBLyricView.h"
 #import "Masonry.h"
+#import "HBLyricModel.h"
+#import "HBLyricColorLabel.h"
 
 @interface HBLyricView ()<UIScrollViewDelegate>
 
@@ -51,7 +53,7 @@
 
     // 2. vScrollView
     UIScrollView *vScrollView = [[UIScrollView alloc] init];
-    vScrollView.backgroundColor = [UIColor blueColor];
+//    vScrollView.backgroundColor = [UIColor blueColor];
     [self.hScrollView addSubview:vScrollView];
     self.vScrollView = vScrollView;
 
@@ -75,7 +77,7 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     // 设置显示内容
-    self.hScrollView.contentSize = CGSizeMake(self.bounds.size.width * 2, 0);
+    self.hScrollView.contentSize = CGSizeMake(self.bounds.size.width * 2, self.bounds.size.height);
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -87,6 +89,42 @@
     if ([self.delegate respondsToSelector:@selector(scrollLyricView:withProgress:)]) {
         [self.delegate scrollLyricView:self withProgress:progress];
     }
+}
+
+#pragma mark - setter & getter -> 显示歌词
+
+- (void)setLyrics:(NSArray *)lyrics {
+    _lyrics = lyrics;
+
+    // 先移除所有label (上一曲的)
+    [self.vScrollView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+
+    // 添加歌词label到vScrollView (本曲)
+    for (NSInteger i = 0; i < lyrics.count; i++) {
+        //
+        HBLyricModel *lyric = lyrics[i];
+        HBLyricColorLabel *lyricLbl = [[HBLyricColorLabel alloc] init];
+        lyricLbl.text = lyric.content;
+        lyricLbl.textColor = [UIColor whiteColor];
+        lyricLbl.font = [UIFont systemFontOfSize:13.0];
+        [self.vScrollView addSubview:lyricLbl];
+
+        [lyricLbl mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.mas_equalTo(self.vScrollView);
+            make.top.mas_equalTo(self.vScrollView).offset(_rowHeight * i);
+            make.height.mas_equalTo(self.rowHeight);
+        }];
+    }
+
+    // 设置vScrollView的显示内容范围
+    self.vScrollView.contentSize = CGSizeMake(self.vScrollView.bounds.size.width, self.rowHeight * lyrics.count);
+}
+
+- (CGFloat)rowHeight {
+    if (!_rowHeight) {
+        _rowHeight = 30;
+    }
+    return _rowHeight;
 }
 
 @end

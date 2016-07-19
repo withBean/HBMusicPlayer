@@ -69,6 +69,7 @@
     [self changeMusic]; // 启动时播放并显示信息
 
     self.lyricView.delegate = self;
+//    self.lyricView.lyrics = self.lyrics;
 }
 
 - (IBAction)play {
@@ -135,6 +136,9 @@
     // 解析歌词
     self.lyrics = [HBLyricParser parserLyricWithFileName:music.lrc];
     self.currentLyricIdx = 0;   // 重置当前歌词索引. 屏蔽歌曲演唱完后切歌崩溃 (下一曲歌词长度比当前短时)
+
+    // 传值
+    self.lyricView.lyrics = self.lyrics;
 }
 
 - (NSString *)stringWithTimeInterval:(NSTimeInterval)timeInterval {
