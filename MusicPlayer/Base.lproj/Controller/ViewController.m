@@ -110,12 +110,14 @@
 
     HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
 
-//    [self stopUpdateProgress];
-//    self.vSingerIcon.transform = CGAffineTransformIdentity;
+    [self stopUpdateProgress];      // 放在播放之前,
+    self.vSingerIcon.transform = CGAffineTransformIdentity;
+
     [self play];
+    self.playBtn.selected = NO;     // 解决切歌时播放/暂停交替的现象; 放在播放之前, 否则timer逻辑错误而多创建 -- 表现为暂停后图片仍旋转, 再次播放后2倍速度旋转加快, 再暂停后1倍速旋转. 当然还另一种思路为创建timer前判断一下
+
     self.durationLbl.text = [self stringWithTimeInterval:playMgr.duration];     // 须放在播放音乐之后, 才能获取duration值
 
-    self.playBtn.selected = NO;     // 解决切歌时播放/暂停交替的现象
 }
 
 - (NSString *)stringWithTimeInterval:(NSTimeInterval)timeInterval {
@@ -127,7 +129,9 @@
 #pragma mark - 进度相关
 
 - (void)startUpdateProgress {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
+    if (!self.timer) {
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
+    }
 }
 
 - (void)stopUpdateProgress {
