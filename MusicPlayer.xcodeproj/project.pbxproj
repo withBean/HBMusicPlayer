@@ -61,6 +61,7 @@
 		26A3C0471D3E02F900396ED0 /* HBLyricParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3C0461D3E02F900396ED0 /* HBLyricParser.m */; };
 		26A3C04A1D3E0ED200396ED0 /* NSDateFormatter+shared.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3C0491D3E0ED200396ED0 /* NSDateFormatter+shared.m */; };
 		26A3C04D1D3E295400396ED0 /* HBLyricColorLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3C04C1D3E295400396ED0 /* HBLyricColorLabel.m */; };
+		26A3C0501D3E3E5C00396ED0 /* HBLyricView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A3C04F1D3E3E5C00396ED0 /* HBLyricView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -154,6 +155,8 @@
 		26A3C0491D3E0ED200396ED0 /* NSDateFormatter+shared.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+shared.m"; sourceTree = "<group>"; };
 		26A3C04B1D3E295400396ED0 /* HBLyricColorLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBLyricColorLabel.h; sourceTree = "<group>"; };
 		26A3C04C1D3E295400396ED0 /* HBLyricColorLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBLyricColorLabel.m; sourceTree = "<group>"; };
+		26A3C04E1D3E3E5C00396ED0 /* HBLyricView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBLyricView.h; sourceTree = "<group>"; };
+		26A3C04F1D3E3E5C00396ED0 /* HBLyricView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBLyricView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +312,8 @@
 				2677258D1D3B685C008689EC /* Main.storyboard */,
 				26A3C04B1D3E295400396ED0 /* HBLyricColorLabel.h */,
 				26A3C04C1D3E295400396ED0 /* HBLyricColorLabel.m */,
+				26A3C04E1D3E3E5C00396ED0 /* HBLyricView.h */,
+				26A3C04F1D3E3E5C00396ED0 /* HBLyricView.m */,
 			);
 			name = View;
 			path = Base.lproj/View;
@@ -494,6 +499,7 @@
 				26A3BF4B1D3CA50800396ED0 /* View+MASAdditions.m in Sources */,
 				26A3C04D1D3E295400396ED0 /* HBLyricColorLabel.m in Sources */,
 				26A3BF561D3CA50800396ED0 /* NSString+MJExtension.m in Sources */,
+				26A3C0501D3E3E5C00396ED0 /* HBLyricView.m in Sources */,
 				26A3BF471D3CA50800396ED0 /* MASViewAttribute.m in Sources */,
 				26A3BF441D3CA50800396ED0 /* MASConstraint.m in Sources */,
 				26A3BF451D3CA50800396ED0 /* MASConstraintMaker.m in Sources */,

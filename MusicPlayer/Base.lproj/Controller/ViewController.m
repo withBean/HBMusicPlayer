@@ -13,8 +13,9 @@
 #import "HBPlayManager.h"
 #import "HBLyricParser.h"
 #import "HBLyricModel.h"
+#import "HBLyricView.h"
 
-@interface ViewController ()
+@interface ViewController ()<HBLyricViewDelegate>
 #pragma mark - H&V
 @property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 @property (weak, nonatomic) IBOutlet UILabel *currentTimeLbl;
@@ -32,6 +33,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *vSingerIcon;
 @property (weak, nonatomic) IBOutlet UILabel *singerLbl;
 @property (weak, nonatomic) IBOutlet UILabel *albumLbl;
+/// 歌词界面
+@property (weak, nonatomic) IBOutlet HBLyricView *lyricView;
+
 
 #pragma mark - 私有属性
 @property (nonatomic, strong) NSArray *musics;
@@ -63,6 +67,8 @@
     self.vSingerIcon.layer.masksToBounds = YES;
 
     [self changeMusic]; // 启动时播放并显示信息
+
+    self.lyricView.delegate = self;
 }
 
 - (IBAction)play {
@@ -210,6 +216,12 @@
         _musics = [HBMusicModel objectArrayWithFilename:@"mlist.plist"];
     }
     return _musics;
+}
+
+#pragma mark - HBLyricViewDelegate
+/// 滑动过程中间视图渐变为透明
+- (void)scrollLyricView:(HBLyricView *)lyricView withProgress:(CGFloat)progress {
+    self.vCenterView.alpha = 1 - progress;
 }
 
 @end
