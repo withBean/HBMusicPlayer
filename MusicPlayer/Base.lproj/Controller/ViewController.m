@@ -36,6 +36,8 @@
 /// 当前歌曲的索引
 @property (nonatomic, assign) NSInteger currentMusicIdx;
 
+@property (nonatomic, strong) NSTimer *timer;
+
 @end
 
 @implementation ViewController
@@ -67,9 +69,13 @@
         self.playBtn.selected = YES;
         [playMgr playMusicWithFileName:music.mp3];
 
+        [self startUpdateProgress];
+
     } else if (self.playBtn.selected == YES) {
         self.playBtn.selected = NO;
         [playMgr pause];
+
+        [self stopUpdateProgress];
     }
 }
 
@@ -104,8 +110,9 @@
 
     HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
 
+//    [self stopUpdateProgress];
+//    self.vSingerIcon.transform = CGAffineTransformIdentity;
     [self play];
-    self.currentTimeLbl.text = [self stringWithTimeInterval:playMgr.currentTime];
     self.durationLbl.text = [self stringWithTimeInterval:playMgr.duration];     // 须放在播放音乐之后, 才能获取duration值
 
     self.playBtn.selected = NO;     // 解决切歌时播放/暂停交替的现象
@@ -117,12 +124,33 @@
     return [NSString stringWithFormat:@"%02d:%02d", minute, second];
 }
 
+#pragma mark - 进度相关
+
+- (void)startUpdateProgress {
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
+}
+
+- (void)stopUpdateProgress {
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
+- (void)updateProgress {
+    HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
+    self.currentTimeLbl.text = [self stringWithTimeInterval:playMgr.currentTime];
+    // value 0~1
+    self.slider.value = playMgr.currentTime / playMgr.duration;
+    // 旋转头像
+    self.vSingerIcon.transform = CGAffineTransformRotate(self.vSingerIcon.transform, M_PI * 0.0025);
+}
+
 - (IBAction)sliderValueChange {
 }
 
 #pragma mark - lazy load
 - (NSArray *)musics {
     if (!_musics) {
+        // MJExtension实现文件转模型
         _musics = [HBMusicModel objectArrayWithFilename:@"mlist.plist"];
     }
     return _musics;
