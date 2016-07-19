@@ -138,13 +138,19 @@
 //}
 
 - (void)setCurrentLyricIdx:(NSInteger)currentLyricIdx {
+
+    // 3. 播放之后的恢复原值
+    HBLyricColorLabel *playedLyricLbl = self.vScrollView.subviews[self.currentLyricIdx];
+    playedLyricLbl.font = [UIFont systemFontOfSize:13.0];
+    playedLyricLbl.progress = 0;
+
     _currentLyricIdx = currentLyricIdx;
 
     // 1. 自动向上滚动 -- 即修改contentOffset的y值
     CGFloat offsetY = self.rowHeight * self.currentLyricIdx - self.vScrollView.contentInset.top;
     self.vScrollView.contentOffset = CGPointMake(0, offsetY);
     // 2. 当前播放字体变大
-    HBLyricColorLabel *lyricLbl = self.vScrollView.subviews[self.currentLyricIdx];
+    HBLyricColorLabel *lyricLbl = self.vScrollView.subviews[currentLyricIdx];
     lyricLbl.font = [UIFont systemFontOfSize:17.0];
 }
 
