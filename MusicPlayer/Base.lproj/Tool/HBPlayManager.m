@@ -8,10 +8,12 @@
 
 #import "HBPlayManager.h"
 
-@interface HBPlayManager ()
+@interface HBPlayManager ()<AVAudioPlayerDelegate>
 
 @property (nonatomic, strong) AVAudioPlayer *audioPlayer;
 @property (nonatomic, copy) NSString *fileName;
+// block属性
+@property (nonatomic, copy) void(^completed)();
 
 @end
 
@@ -26,15 +28,17 @@ static HBPlayManager *_playManager;
     return _playManager;
 }
 
-- (void)playMusicWithFileName:(NSString *)fileName {
+- (void)playMusicWithFileName:(NSString *)fileName completed:(void (^)())completed {
 
     if (![self.fileName isEqualToString:fileName]) {    // 解决暂停后播放从头开始的bug
         // 创建播放器
         NSURL *fileURL = [[NSBundle mainBundle] URLForResource:fileName withExtension:nil];
         self.audioPlayer = [[AVAudioPlayer alloc] initWithContentsOfURL:fileURL error:nil];
+        self.audioPlayer.delegate = self;
         [self.audioPlayer prepareToPlay];
 
         self.fileName = fileName;
+        self.completed = completed;
     }
     // 播放
     [self.audioPlayer play];
@@ -44,7 +48,17 @@ static HBPlayManager *_playManager;
     [self.audioPlayer pause];
 }
 
+#pragma mark - AVAudioPlayerDelegate
+
+// This method is NOT called if the player is stopped due to an interruption.
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+    if (flag) {
+        self.completed();       // 或[self completed](), 推荐self.completed(), 因为方括号的容易写错
+    }
+}
+
 #pragma mark - setter & getter
+
 - (NSTimeInterval)currentTime {
     return self.audioPlayer.currentTime;
 }

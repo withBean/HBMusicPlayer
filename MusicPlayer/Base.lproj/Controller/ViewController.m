@@ -67,7 +67,10 @@
     // 播放与暂停
     if (self.playBtn.selected == NO) {      // 不要写self.playBtn.selected != self.playBtn.selected, 因为切歌时也在调用play, 会导致紊乱
         self.playBtn.selected = YES;
-        [playMgr playMusicWithFileName:music.mp3];
+        // 本曲播放完后自动进入下一曲 (playMgr代理方法判断正常播放完毕, block回调实现下一曲)
+        [playMgr playMusicWithFileName:music.mp3 completed:^{
+            [self next];
+        }];
 
         [self startUpdateProgress];
 

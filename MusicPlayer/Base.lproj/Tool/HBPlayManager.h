@@ -19,7 +19,7 @@
 /// 单例
 + (instancetype)sharedPlayManager;
 /// 播放音乐
-- (void)playMusicWithFileName:(NSString *)fileName;
+- (void)playMusicWithFileName:(NSString *)fileName completed:(void(^)())completed;
 // 暂停音乐
 - (void)pause;
 
