@@ -80,6 +80,7 @@
 
     // 3. sliderView
     HBSliderView *sliderView = [[HBSliderView alloc] init];
+    sliderView.hidden = YES;  // 默认隐藏
     [self addSubview:sliderView];   // 为什么添加到self.vScrollView上时无效??!
     self.sliderView = sliderView;
 
@@ -104,6 +105,43 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.hScrollView) {
+        [self hScrollViewDidScroll];
+    } else if (scrollView == self.vScrollView) {
+        [self vScrollViewDidScroll];
+    }
+}
+
+// MARK: - sliderView相关
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    if (scrollView == self.vScrollView) {
+        self.sliderView.hidden = NO;
+    }
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    if (scrollView == self.vScrollView) {
+        // 延迟2s隐藏, 让用户有时间点击按钮
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            // 正在拖拽时不要隐藏滚动条
+            if (scrollView.isDragging == YES) {
+                return;
+            }
+            // 隐藏
+            self.sliderView.hidden = YES;
+        });
+    }
+}
+
+- (void)vScrollViewDidScroll {
+    NSInteger index = self.vScrollView.contentOffset.y + self.vScrollView.contentInset.top / self.rowHeight;
+
+    // 设置当前滚动行的显示时间
+    HBLyricModel *lyric = self.lyrics[index];
+    self.sliderView.selectedTime = lyric.time;
+}
+
+- (void)hScrollViewDidScroll {
     CGFloat progress = self.hScrollView.contentOffset.x / self.bounds.size.width;
 //    NSLog(@"%f", progress);
 
