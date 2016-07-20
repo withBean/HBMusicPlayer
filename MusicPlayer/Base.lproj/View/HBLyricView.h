@@ -29,6 +29,6 @@
 /// 当前播放歌词索引
 @property (nonatomic, assign) NSInteger currentLyricIdx;
 /// 当前播放歌词进度 (设置颜色)
-@property (nonatomic, assign) NSInteger progress;
+@property (nonatomic, assign) CGFloat progress;
 
 @end

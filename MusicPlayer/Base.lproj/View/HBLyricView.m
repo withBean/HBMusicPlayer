@@ -123,8 +123,8 @@
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
     if (scrollView == self.vScrollView) {
-        // 延迟4s隐藏, 让用户有时间点击按钮
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 延迟3s隐藏, 让用户有时间点击按钮
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             // 正在拖拽时不要隐藏滚动条
             if (scrollView.isDragging == YES) {
                 return;
@@ -192,7 +192,7 @@
 
 - (CGFloat)rowHeight {
     if (!_rowHeight) {
-        _rowHeight = 30.0;
+        _rowHeight = 25.0;
     }
     return _rowHeight;
 }
@@ -230,7 +230,7 @@
     self.vScrollView.contentOffset = CGPointMake(0, offsetY);
 }
 
-- (void)setProgress:(NSInteger)progress {
+- (void)setProgress:(CGFloat)progress {
     _progress = progress;
 
     // 仅当前播放改变颜色
