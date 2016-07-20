@@ -52,6 +52,17 @@
 
 @implementation ViewController
 
+#pragma mark - lazy load
+- (NSArray *)musics {
+    if (!_musics) {
+        // MJExtension框架实现文件转模型
+        _musics = [HBMusicModel objectArrayWithFilename:@"mlist.plist"];
+    }
+    return _musics;
+}
+
+#pragma mark - UI界面
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -71,6 +82,8 @@
 
     self.lyricView.delegate = self;
 }
+
+#pragma mark - 基本功能
 
 - (IBAction)play {
     HBMusicModel *music = self.musics[self.currentMusicIdx];
@@ -143,6 +156,12 @@
 
 #pragma mark - 进度相关
 
+- (IBAction)sliderValueChange {
+    HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
+    // 进度条位置对应的时间 = 进度条value(0~1) * 歌曲总时长
+    playMgr.currentTime = self.slider.value * playMgr.duration;
+}
+
 - (void)startUpdateProgress {
     if (!self.timer) {
         self.timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateProgress) userInfo:nil repeats:YES];
@@ -203,21 +222,6 @@
     // 3. lyricView传值
     self.lyricView.currentLyricIdx = self.currentLyricIdx;
     self.lyricView.progress = progress;
-}
-
-- (IBAction)sliderValueChange {
-    HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
-    // 进度条位置对应的时间 = 进度条value(0~1) * 歌曲总时长
-    playMgr.currentTime = self.slider.value * playMgr.duration;
-}
-
-#pragma mark - lazy load
-- (NSArray *)musics {
-    if (!_musics) {
-        // MJExtension框架实现文件转模型
-        _musics = [HBMusicModel objectArrayWithFilename:@"mlist.plist"];
-    }
-    return _musics;
 }
 
 #pragma mark - HBLyricViewDelegate
