@@ -136,7 +136,7 @@
 }
 
 - (void)vScrollViewDidScroll {
-    NSInteger index = self.vScrollView.contentOffset.y / self.rowHeight;
+    NSInteger index = (self.vScrollView.contentOffset.y + self.vScrollView.contentInset.top) / self.rowHeight;
     NSLog(@"%zd", index);
 
     // 屏蔽向上或向下滑动太多时index导致数组越界
