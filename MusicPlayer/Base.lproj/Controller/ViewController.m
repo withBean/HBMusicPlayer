@@ -15,6 +15,7 @@
 #import "HBLyricModel.h"
 #import "HBLyricView.h"
 #import "HBTimeTool.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface ViewController ()<HBLyricViewDelegate>
 #pragma mark - H&V
@@ -222,12 +223,79 @@
     // 3. lyricView传值
     self.lyricView.currentLyricIdx = self.currentLyricIdx;
     self.lyricView.progress = progress;
+
+    // 锁屏界面
+    [self updateLockScreen];
 }
 
 #pragma mark - HBLyricViewDelegate
 /// 滑动过程中间视图渐变为透明
 - (void)scrollLyricView:(HBLyricView *)lyricView withProgress:(CGFloat)progress {
     self.vCenterView.alpha = 1 - progress;
+}
+
+#pragma mark - 锁屏界面
+/*
+ // MPMediaItemPropertyAlbumTitle            专辑名称
+ // MPMediaItemPropertyAlbumTrackCount
+ // MPMediaItemPropertyAlbumTrackNumber
+ // MPMediaItemPropertyArtist                歌手
+ // MPMediaItemPropertyArtwork               专辑图片
+ // MPMediaItemPropertyComposer
+ // MPMediaItemPropertyDiscCount
+ // MPMediaItemPropertyDiscNumber
+ // MPMediaItemPropertyGenre
+ // MPMediaItemPropertyPersistentID
+ // MPMediaItemPropertyPlaybackDuration      歌曲的总时长
+ // MPMediaItemPropertyTitle                 歌曲名
+ */
+// 设置锁屏界面歌曲信息
+- (void)updateLockScreen {
+    HBPlayManager *playMgr = [HBPlayManager sharedPlayManager];
+    HBMusicModel *music = self.musics[self.currentMusicIdx];
+
+    // 创建锁屏界面对象
+    MPNowPlayingInfoCenter *playingInfoCenter = [MPNowPlayingInfoCenter defaultCenter];
+    // 设置属性
+    NSMutableDictionary *info = [NSMutableDictionary dictionary];
+    info[MPMediaItemPropertyAlbumTitle] = music.album;
+    info[MPMediaItemPropertyArtist] = music.singer;
+    info[MPMediaItemPropertyTitle] = music.name;
+//    info[MPMediaItemPropertyArtwork] = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:music.image]];
+    info[MPMediaItemPropertyArtwork] = [[MPMediaItemArtwork alloc] initWithImage:[self updateImageWithLyric]];
+    info[MPMediaItemPropertyPlaybackDuration] = @(playMgr.duration);
+    info[MPNowPlayingInfoPropertyElapsedPlaybackTime] = @(playMgr.currentTime); // 当前播放时间
+
+    playingInfoCenter.nowPlayingInfo = info;
+}
+
+// 绘制歌词到图片上
+- (UIImage *)updateImageWithLyric {
+    HBMusicModel *music = self.musics[self.currentMusicIdx];
+    UIImage *image = [UIImage imageNamed:music.image];
+
+    // 1. 开启图形上下文
+    UIGraphicsBeginImageContext(image.size);
+
+    // 2.1 画专辑图片 [背景图片 + 歌词]
+    [image drawInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+    // 2.2 画背景图片(做歌词背景色)
+    UIImage *maskImage = [UIImage imageNamed:@"lock_lyric_mask"];
+    CGFloat maskImgH = 40;
+    [maskImage drawInRect:CGRectMake(0, image.size.height - maskImgH, image.size.width, maskImgH)];
+    // 颜色
+    [[UIColor whiteColor] set];
+    // 2.3 画歌词
+    HBLyricModel *lyric = self.lyrics[self.currentLyricIdx];
+    [lyric.content drawInRect:CGRectMake(0, image.size.height - maskImgH + 20, image.size.width, 30) withFont:[UIFont systemFontOfSize:13.0] lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
+
+    // 3. 获取图片
+    UIImage *drawnImage = UIGraphicsGetImageFromCurrentImageContext();
+
+    // 4. 关闭图形上下文
+    UIGraphicsEndImageContext();
+
+    return drawnImage;
 }
 
 #pragma mark - 接收远程控制事件
