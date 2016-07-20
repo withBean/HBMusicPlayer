@@ -12,6 +12,8 @@
 
 @interface HBSliderView : UIView
 
+/// 歌词模型数组
+@property (nonatomic, copy) NSString *selectedContent;
 /// 滚动所在行歌词的开始时间
 @property (nonatomic, assign) NSTimeInterval selectedTime;
 

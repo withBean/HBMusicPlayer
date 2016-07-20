@@ -147,9 +147,10 @@
         index = self.lyrics.count - 1;
     }
 
-    // 设置当前滚动行的显示时间
+    // 设置当前滚动行的显示时间和显示内容
     HBLyricModel *lyric = self.lyrics[index];
     self.sliderView.selectedTime = lyric.time;
+    self.sliderView.selectedContent = lyric.content;
 }
 
 - (void)hScrollViewDidScroll {

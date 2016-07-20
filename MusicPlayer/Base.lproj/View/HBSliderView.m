@@ -99,4 +99,9 @@
     self.timeLbl.text = [HBTimeTool stringWithTimeInterval:self.selectedTime];
 }
 
+- (void)setSelectedContent:(NSString *)selectedContent {
+    _selectedContent = selectedContent;
+    self.tipLbl.text = selectedContent;
+}
+
 @end
