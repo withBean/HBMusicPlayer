@@ -226,4 +226,42 @@
     self.vCenterView.alpha = 1 - progress;
 }
 
+#pragma mark - 接收远程控制事件
+/*
+ // available in iPhone OS 3.0
+ UIEventSubtypeNone                              = 0,
+
+ // for UIEventTypeMotion, available in iPhone OS 3.0
+ UIEventSubtypeMotionShake                       = 1,
+
+ // for UIEventTypeRemoteControl, available in iOS 4.0
+ UIEventSubtypeRemoteControlPlay                 = 100,
+ UIEventSubtypeRemoteControlPause                = 101,
+ UIEventSubtypeRemoteControlStop                 = 102,
+ UIEventSubtypeRemoteControlTogglePlayPause      = 103,     // 从暂停到播放
+ UIEventSubtypeRemoteControlNextTrack            = 104,
+ UIEventSubtypeRemoteControlPreviousTrack        = 105,
+ UIEventSubtypeRemoteControlBeginSeekingBackward = 106,     // 开始快退
+ UIEventSubtypeRemoteControlEndSeekingBackward   = 107,     // 结束快退
+ UIEventSubtypeRemoteControlBeginSeekingForward  = 108,     // 开始快进
+ UIEventSubtypeRemoteControlEndSeekingForward    = 109,     // 结束快进
+ */
+- (void)remoteControlReceivedWithEvent:(UIEvent *)event {
+    switch (event.subtype) {
+        case UIEventSubtypeRemoteControlPlay:
+        case UIEventSubtypeRemoteControlPause:
+            [self play];
+            break;
+        case UIEventSubtypeRemoteControlPreviousTrack:
+            [self previous];
+            break;
+        case UIEventSubtypeRemoteControlNextTrack:
+            [self next];
+            break;
+
+        default:
+            break;
+    }
+}
+
 @end

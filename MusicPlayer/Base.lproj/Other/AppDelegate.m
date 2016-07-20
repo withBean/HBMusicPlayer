@@ -26,6 +26,9 @@
     [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
     // 3. 配置info.plist文件 或 设置图形化界面(capabilities -> background modes)
 
+    // 开启远程控制事件
+    [application beginReceivingRemoteControlEvents];
+
     return YES;
 }
 
