@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface AppDelegate ()
 
@@ -16,7 +17,15 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    // 模拟器默认可以后台播放, 但真机不可以
+
+    // 获取后台播放
+    // 1. 获取会话
+    AVAudioSession *audioSession = [AVAudioSession sharedInstance];
+    // 2. 设置分类
+    [audioSession setCategory:AVAudioSessionCategoryPlayback error:nil];
+    // 3. 配置info.plist文件 或 设置图形化界面(capabilities -> background modes)
+
     return YES;
 }
 

@@ -196,8 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				26A3BF0A1D3CA4AA00396ED0 /* Lib */,
-				26A3BF0C1D3CA4AA00396ED0 /* Other */,
 				26A3BF061D3CA4AA00396ED0 /* Category */,
+				26A3BF0C1D3CA4AA00396ED0 /* Other */,
 				26A3BF0F1D3CA4AA00396ED0 /* Tool */,
 				26A3BF071D3CA4AA00396ED0 /* Controller */,
 				26A3BF101D3CA4AA00396ED0 /* View */,
@@ -422,6 +422,11 @@
 					267725801D3B685C008689EC = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 9D3J2E978B;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
