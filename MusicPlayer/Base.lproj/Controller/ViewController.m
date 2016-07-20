@@ -16,6 +16,7 @@
 #import "HBLyricView.h"
 #import "HBTimeTool.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController ()<HBLyricViewDelegate>
 #pragma mark - H&V
@@ -82,6 +83,9 @@
     [self changeMusic]; // 启动时播放并显示信息
 
     self.lyricView.delegate = self;
+
+    // MARK: - 接收打断通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioSessionInterruptionNotification:) name:AVAudioSessionInterruptionNotification object:nil];
 }
 
 #pragma mark - 基本功能
@@ -334,6 +338,42 @@
         default:
             break;
     }
+}
+
+#pragma mark - 打断通知`AVAudioSessionInterruptionNotification` (短信/电话等)
+// 1. 接收通知 已写
+
+// 2. 通知事件
+- (void)audioSessionInterruptionNotification:(NSNotification *)noti {
+//    NSLog(@"%@", noti.userInfo);
+    /*
+     AVAudioSessionInterruptionOptionKey = 1
+     AVAudioSessionInterruptionTypeKey = 0      // 被打断
+     */
+
+    AVAudioSessionInterruptionType interruptionType = [noti.userInfo[AVAudioSessionInterruptionTypeKey] unsignedIntValue];
+    /*
+     AVAudioSessionInterruptionTypeBegan = 1,  //the system has interrupted your audio session
+     AVAudioSessionInterruptionTypeEnded = 0,  // the interruption has ended
+     */
+    if (interruptionType == AVAudioSessionInterruptionTypeBegan) {
+        // 暂停
+        self.playBtn.selected = YES;
+        [self play];
+    } else if (interruptionType == AVAudioSessionInterruptionTypeEnded) {
+        // 播放 (保险起见, 多写几次)
+        self.playBtn.selected = NO;
+        [self play];
+        self.playBtn.selected = YES;
+        [self play];
+        self.playBtn.selected = NO;
+        [self play];
+    }
+}
+
+// 3. 取消通知
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
