@@ -59,6 +59,7 @@
     // 2. vScrollView
     UIScrollView *vScrollView = [[UIScrollView alloc] init];
 //    vScrollView.backgroundColor = [UIColor blueColor];
+    vScrollView.delegate = self;
     [self.hScrollView addSubview:vScrollView];
     self.vScrollView = vScrollView;
 
@@ -105,6 +106,7 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    NSLog(@"%f", scrollView.contentOffset.y);
     if (scrollView == self.hScrollView) {
         [self hScrollViewDidScroll];
     } else if (scrollView == self.vScrollView) {
@@ -121,8 +123,8 @@
 
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
     if (scrollView == self.vScrollView) {
-        // 延迟2s隐藏, 让用户有时间点击按钮
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        // 延迟4s隐藏, 让用户有时间点击按钮
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             // 正在拖拽时不要隐藏滚动条
             if (scrollView.isDragging == YES) {
                 return;
@@ -134,7 +136,16 @@
 }
 
 - (void)vScrollViewDidScroll {
-    NSInteger index = self.vScrollView.contentOffset.y + self.vScrollView.contentInset.top / self.rowHeight;
+    NSInteger index = self.vScrollView.contentOffset.y / self.rowHeight;
+    NSLog(@"%zd", index);
+
+    // 屏蔽向上或向下滑动太多时index导致数组越界
+    /* index 18446744073709551401 beyond bounds [0 .. 35] */
+    if (index < 0) {
+        index = 0;
+    } else if (index > self.lyrics.count - 1) {
+        index = self.lyrics.count - 1;
+    }
 
     // 设置当前滚动行的显示时间
     HBLyricModel *lyric = self.lyrics[index];
@@ -170,7 +181,7 @@
 
         [lyricLbl mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.mas_equalTo(self.vScrollView);
-            make.top.mas_equalTo(self.vScrollView).offset(_rowHeight * i);
+            make.top.mas_equalTo(self.vScrollView).offset(self.rowHeight * i);
             make.height.mas_equalTo(self.rowHeight);
         }];
     }
@@ -205,12 +216,18 @@
 
     _currentLyricIdx = currentLyricIdx;
 
-    // 1. 自动向上滚动 -- 即修改contentOffset的y值
-    CGFloat offsetY = self.rowHeight * self.currentLyricIdx - self.vScrollView.contentInset.top;
-    self.vScrollView.contentOffset = CGPointMake(0, offsetY);
     // 2. 当前播放字体变大
     HBLyricColorLabel *lyricLbl = self.vScrollView.subviews[currentLyricIdx];
     lyricLbl.font = [UIFont systemFontOfSize:17.0];
+
+    // 当拖拽vScrollView时屏蔽自动滚动
+    if (self.sliderView.hidden == NO) { // ?
+        return;
+    }
+
+    // 1. 自动向上滚动 -- 即修改contentOffset的y值
+    CGFloat offsetY = self.rowHeight * self.currentLyricIdx - self.vScrollView.contentInset.top;
+    self.vScrollView.contentOffset = CGPointMake(0, offsetY);
 }
 
 - (void)setProgress:(NSInteger)progress {
